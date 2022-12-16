@@ -23,7 +23,7 @@
                 </ul>
             </div>
             <form method="POST" enctype="multipart/form-data"
-                @if (isset($marca)) action="{{ route('motas.update', $marca->id) }}"
+                @if (isset($marca)) action="{{ route('marcas.update', $marca->id) }}"
                 @else
             action="{{ route('marcas.store') }}" @endif>
                 @csrf
@@ -48,10 +48,10 @@
                 <br>
                 <label for="ranking"> Ranking da Marca:</label>
                 <input type="text" id="ranking" name="ranking"
-                @if (isset($marca)) value="{{ $marca->ranking }}">
+                @if (isset($marca)) value="{{ $marca->ranking }}"@endif>
                 <br>
 
-                @endif>
+
 
                 <input type="submit" value="Criar Marca"
                     @if (isset($marca)) value="Editar Marca"

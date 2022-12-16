@@ -4,9 +4,9 @@
 
     <body>
         <div class="titulo_paginas">
-            <h1> MOTAS
+            <h1>
                 @if (isset($mota))
-                    Editar Motas
+                    Atualizar dados da  Mota <b>{{ $mota['nome'] }} </b>
                 @else
                     Criar Mota
                 @endif

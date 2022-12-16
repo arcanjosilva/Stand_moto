@@ -52,10 +52,6 @@ class MarcasController extends Controller
     public function store(NewMarcaRequest $request)
 
     {
-        $validateData = $request->validate([
-            'nome'=>'required',
-            'img' =>'required|image|mimes:png,jpg,jpeg,gif|max:2048'
-        ]);
         $nome=request('nome');
         $bio=request('bio');
         // $img=request('img');
@@ -82,6 +78,7 @@ class MarcasController extends Controller
         $marca->bio=$bio;
         $marca->img=$img;
         $marca ->ranking=$ranking;
+        $marca->created_by_m = auth()->user()->id;
 
         $marca->save();
 
@@ -94,9 +91,10 @@ class MarcasController extends Controller
         $bio=request('bio');
         $ranking=request('ranking');
 
-        $changed = (bool) request('changed');
+
+        $changed = (request('changed') == 'true')?1:0;
         $marca= Marca::findOrFail($id);
-        if($changed == 'true'){
+        if($changed){
             $img ="";
             if($request->has('img'))
             {
@@ -112,11 +110,12 @@ class MarcasController extends Controller
             }
             $marca->img =$img;
 
-            $marca->nome=$nome;
-            $marca->bio=$bio;
-            $marca ->ranking=$ranking;
 
         }
+
+        $marca->nome=$nome;
+        $marca->bio=$bio;
+        $marca ->ranking=$ranking;
 
 
 

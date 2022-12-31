@@ -20,8 +20,11 @@ Route::get('/', function () {
 })->name('root');
 
 
+
+
 Route::get('/motas',[MotasController::class,'index'])->name('motas.index');
-Route::get('/motas/tipo/{id}',[MotasController::class,'motasPorTipo'])->name('motas.by.tipo');
+Route::get('/contactos',[MotasController::class,'contacto'])->name('motas.contacto');
+Route::get('/motas/tipo/{id}',[MotasController::class,'estiloMota'])->name('motas.by.estiloMota');
 Route::get('/motas/create',[MotasController::class,'create'])->name('motas.create')->middleware('auth');
 Route::get('/motas/edit/{id}',[MotasController::class,'edit'])->name('motas.edit')->middleware('auth');
 Route::post('/motas',[MotasController::class,'store'])->name('motas.store')->middleware('auth');;
@@ -29,8 +32,14 @@ Route::put('/motas/{id}',[MotasController::class,'update'])->name('motas.update'
 Route::get('/motas/{id}',[MotasController::class,'show'])->name('motas.show');
 Route::delete('/motas/{id}',[MotasController::class,'destroy'])->name('motas.destroy')->middleware('auth');
 
+
+//Pesquisa
+// Route::get('/motas/search',[MotasController::class,'search'])->name('motas.search');
+
+
+
+
 Route::get('/marcas',[MarcasController::class,'index'])->name('marcas.index');
-// Route::get('/marcas/tipo/{id}',[MarcasController::class,'marcasPorTipo'])->name('marcas.by.tipo');
 Route::get('/marcas/create',[MarcasController::class,'create'])->name('marcas.create')->middleware('auth');
 Route::get('/marcas/edit/{id}',[MarcasController::class,'edit'])->name('marcas.edit')->middleware('auth');
 Route::post('/marcas',[MarcasController::class,'store'])->name('marcas.store')->middleware('auth');

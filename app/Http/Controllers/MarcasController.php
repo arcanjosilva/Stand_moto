@@ -34,8 +34,9 @@ class MarcasController extends Controller
         $motas = Mota::all();
 
         $user = auth()->user();
-        $userMotas=$user->motas;
-        if($userMotas->count()==10){
+
+        $userMarcas=$user->motas;
+        if($userMarcas->count()==10){
             return redirect('/home')->with('mssg','Não pode criar mais produtos');
         }
         return view('createMarca',['motas' => $motas]);
@@ -109,13 +110,11 @@ class MarcasController extends Controller
                 $img = "/storage/".$filePath;
             }
             $marca->img =$img;
-
-
         }
 
         $marca->nome=$nome;
         $marca->bio=$bio;
-        $marca ->ranking=$ranking;
+        $marca->ranking=$ranking;
 
 
 
@@ -125,6 +124,7 @@ class MarcasController extends Controller
     }
 
     public function destroy($id)
+
     {
         $marca = Marca::findOrFail($id);
         $marca->delete();

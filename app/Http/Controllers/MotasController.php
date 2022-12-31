@@ -12,6 +12,14 @@ use App\Models\motas_marcas;
 
 class MotasController extends Controller
 {
+
+
+    public function contacto()
+    {
+        return view('contactos');
+    }
+
+
     public function index()
     {
         $marcas = Marca::all();
@@ -54,6 +62,7 @@ class MotasController extends Controller
             'nome'=>'required',
             'img' =>'required|image|mimes:png,jpg,jpeg,gif|max:2048'
         ]);
+
         $nome=request('nome');
         $desc=request('desc');
         // $img=request('img');
@@ -80,7 +89,6 @@ class MotasController extends Controller
         $mota->desc=$desc;
         $mota->img=$img;
         $mota ->preco=$preco;
-        // $mota->marca_id = $tipo;
         $mota->created_by = auth()->user()->id;
 
         $mota->save();
@@ -90,6 +98,7 @@ class MotasController extends Controller
 
 
     public function update($id,EditMotaRequest $request){
+
         $nome = request('nome');
         $desc = request('desc');
         $preco = request('preco');
@@ -124,7 +133,8 @@ class MotasController extends Controller
     }
 
 
-    public function motasPorTipo($id){
+
+    public function estiloMota($id){
         $marcas = Marca::all();
         $marca = Marca::findOrFail($id);
         $motas = $marca->motas;
@@ -137,5 +147,21 @@ class MotasController extends Controller
 
         return redirect('/motas');
     }
+
+
+
+
+
+//     public function search(Request $request)
+// {
+//     $motas = Mota::where('nome', 'like',  $request->$search)->get();
+//     return view('motasporPesquisa')->with('motas', $motas);
+// }
+
+
+
+
+
+
 
 }

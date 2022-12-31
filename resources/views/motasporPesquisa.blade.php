@@ -4,7 +4,7 @@
 
     <body class="bodymotas">
         <div class="titulo_paginas">
-            <h1> Detalhes sobre a {{ $mota['nome'] }} </h1>
+            <h1> Detalhes  </h1>
         </div>
 
         <div class="boxmotasdetalhesgeral">
@@ -20,22 +20,9 @@
                 <p>{{ $mota['desc'] }}</p>
                 <b>PREÇO: </b><b class="motapreco">{{ $mota['preco'] }}</b>
             @else
-                <h1> O Mota nao existe </h1>
+                <h1> A Mota nao existe </h1>
             @endif
 
-            @auth
-                @if ($mota->created_by == auth()->user()->id || auth()->user()->isAdmin)
-                    <form action="{{ route('motas.destroy', $mota->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button> Eliminar MOTA </button>
-                    </form>
-                    <form action="{{ route('motas.edit', $mota->id) }}" method="GET">
-                        @csrf
-                        <button> Editar MOTA </button>
-                    </form>
-                @endif
-            @endauth
             <br>
             <div class="voltarmmotas">
             <a href="/motas"> Voltar as motas </a>

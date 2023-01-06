@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('root');
+Route::get('/',[MotasController::class,'randommotas'])->name('root');
 
 
 
+
+
+Route::get('/motas/search',[MotasController::class,'search'])->name('motas.search');
+Route::get('/welcome', [MotasController::class, 'randommotas'])->name('motas.randommotas');
 
 Route::get('/motas',[MotasController::class,'index'])->name('motas.index');
 Route::get('/contactos',[MotasController::class,'contacto'])->name('motas.contacto');
@@ -34,7 +36,6 @@ Route::delete('/motas/{id}',[MotasController::class,'destroy'])->name('motas.des
 
 
 //Pesquisa
-// Route::get('/motas/search',[MotasController::class,'search'])->name('motas.search');
 
 
 

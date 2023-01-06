@@ -9,7 +9,7 @@
 
 
 
-    <div class="box">
+        <div class="box">
             @if (!isset($actMarca))
                 <b>
             @endif
@@ -29,11 +29,15 @@
                 @endif
             @endforeach
         </div>
-    {{-- <form action="{{route('motas.search')}}" method="GET">
-        @csrf
-        <input type="text" name="search" placeholder="Filtrar">
-        <button type="submit"> Filtrar</button>
-    </form> --}}
+        <form action="{{ route('motas.search') }}" method="GET">
+            @csrf
+            <input type="text" name="search" placeholder="Filtrar">
+            <input type="radio" name="order" id="order" value="ASC"> Ascendente
+            <input type="radio" name="order" id="order" value="DESC"> Descendente
+            <button type="submit"> Filtrar</button>
+
+        </form>
+
 
 
 
@@ -43,7 +47,7 @@
                     <div class="boxmotaindividual">
                         <a href="{{ route('motas.show', $mota->id) }}" style="flex-wrap:wrap-reverse">
                             <img src="{{ $mota['img'] }}" alt="img/mota" style="width: 300px;height:70%;">
-                            <h2 style="text-align: center"> {{ $mota['nome'] }}</h2>
+                            <h2 style="text-align: center;color: red;"> {{ $mota['nome'] }}</h2>
                             <p style="text-align: center; color: black;"> {{ $mota['preco'] }}</p>
 
                         </a>
@@ -53,13 +57,13 @@
         </div>
 
         <div class="contactosModelos">
-            <a href="{{route('motas.contacto')}}">Contactar para mais informações</a>
+            <a href="{{ route('motas.contacto') }}">Contactar para mais informações</a>
         </div>
 
     </body>
     <div class="experiencia">
         <footer class="finalcompleto">
-            <div class="contactos" >
+            <div class="contactos">
                 <p class="textonaoimportante"><b> Contatos </b></p>
                 <p class="textonaoimportante">
                     Rua de Santa Maria, nº 253 <br />
@@ -70,8 +74,7 @@
             </div>
             <div class="redessocias">
                 <p class="textonaoimportante"><b> Redes Sociais</b></p>
-                <a class="instagram"
-                    href="https://www.instagram.com/arcanjosilvaa/?hl=en">Instagram</a>
+                <a class="instagram" href="https://www.instagram.com/arcanjosilvaa/?hl=en">Instagram</a>
                 <br />
                 <a class="instagram" href="https://www.tiktok.com/@arcanjosilvaa?lang=en">Tik Tok</a>
             </div>

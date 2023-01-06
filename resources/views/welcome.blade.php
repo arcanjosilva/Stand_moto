@@ -19,6 +19,24 @@
         </div>
 
     </body>
+    <div class="titulo_random">
+        <h1>Destaques do Dia</h1>
+    </div>
+
+    <div class="container" style="padding: 50px">
+        <div class="boxmotasgeral">
+            @foreach ($motas as $mota)
+                <div class="boxmotaindividual">
+                    <a href="{{ route('motas.show', $mota->id) }}" style="flex-wrap:wrap-reverse">
+                        <img src="{{ $mota['img'] }}" alt="img/mota" style="width: 300px;height:243px;">
+                        <h2 style="text-align: center;color: red;"> {{ $mota['nome'] }}</h2>
+                        <p style="text-align: center; color: black;"> {{ $mota['preco'] }}</p>
+
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </div>
 
     <footer class="finalcompleto">
         <div class="contactos">

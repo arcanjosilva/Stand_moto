@@ -2,7 +2,11 @@
     text-align: center;
     padding-top: 50px;
     padding-bottom: 50px;
-    background: rgb(253, 90, 65);
+    background: rgb(252, 52, 52);
+}
+.titulo_random{
+    text-align: center;
+    padding-top: 50px;
 }
 .imagemwelcome {
     display: flex;
@@ -11,7 +15,7 @@
 }
 
 .finalcompleto {
-    background-color: rgb(253, 90, 65);
+    background-color: rgb(252, 52, 52);
     display: flex;
     justify-content: space-around;
     padding: 25px;
@@ -39,18 +43,18 @@
     color: white;
 }
 .textonaoimportante {
-    color: rgb(0, 0, 0);
+    color: white
 }
 .redessocias {
-    color: rgb(0, 0, 0);
+    color: white
 }
 .instagram {
-    color: rgb(0, 0, 0);
+    color: white
 }
 .box {
     display: flex;
     justify-content: space-around;
-    background-color: rgb(253, 90, 65);
+    background-color: #dde2e7;
     padding: 10px;
 
 }

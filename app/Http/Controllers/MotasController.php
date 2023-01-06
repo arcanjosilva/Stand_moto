@@ -12,7 +12,10 @@ use App\Models\motas_marcas;
 
 class MotasController extends Controller
 {
-
+    // public function root()
+    // {
+    //     return view('welcome')
+    // }
 
     public function contacto()
     {
@@ -23,6 +26,7 @@ class MotasController extends Controller
     public function index()
     {
         $marcas = Marca::all();
+
         $motas = Mota::all();
         return view('motas',['motas'=>$motas, 'marcas' => $marcas]);
 
@@ -140,6 +144,8 @@ class MotasController extends Controller
         $motas = $marca->motas;
         return view('motas', ['motas'=>$motas, 'marcas'=> $marcas,  'actMarca' => $id]);
     }
+
+
     public function destroy($id)
     {
         $mota = Mota::findOrFail($id);
@@ -152,14 +158,19 @@ class MotasController extends Controller
 
 
 
-//     public function search(Request $request)
-// {
-//     $motas = Mota::where('nome', 'like',  $request->$search)->get();
-//     return view('motasporPesquisa')->with('motas', $motas);
-// }
+    public function search(Request $request)
+{
+    $marcas = Marca::all();
+    $motas = Mota::where('nome', 'LIKE', "%".$request->search."%")->orderBy('preco',$request->order)->get();
 
+    return view('motas',['motas'=>$motas, 'marcas' => $marcas]);
 
+}
 
+public function randommotas(){
+    $motas= Mota::inRandomOrder()->limit(4)->get();
+    return view("welcome",['motas'=>$motas]);
+}
 
 
 
